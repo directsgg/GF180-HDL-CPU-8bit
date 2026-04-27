@@ -34,7 +34,13 @@ module cpu (
 
     wire [7:0] D;
 
-    reg [7:0] mem [32:0];
+    reg [7:0] mem [31:0];
+
+    initial begin
+    for (integer i = 0; i < 32; i = i + 1) begin
+        mem[i] = 0;
+    end
+end
 
 
     always @(posedge clk or posedge rst) begin
@@ -47,10 +53,13 @@ module cpu (
             S <= 0;
             INPR <= 0;
             OUTR <= 0;
+            IR <= 0;
+            DR <= 0;
+            AC <= 0;
             // Inicializar memoria a 0 durante reset asíncrono
-            for (integer i = 0; i < 32; i = i + 1) begin
-                mem[i] <= 0;
-            end
+            // for (integer i = 0; i < 32; i = i + 1) begin
+            //     mem[i] <= 0;
+            // end
         end else begin
             S <= (start_cpu & ~S) | (~stop_cpu & S);
 
