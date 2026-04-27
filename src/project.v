@@ -57,6 +57,6 @@ cpu my_cpu (
   assign uio_oe  = 8'b00000001;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+  wire _unused = &{ena, uio_in[7], 1'b0};
 
 endmodule
