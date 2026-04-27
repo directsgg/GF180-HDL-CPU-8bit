@@ -14,7 +14,7 @@ module cpu (
 );
 
     reg S;
-    reg [2:0] SC = 0;
+    reg [2:0] SC;
     localparam 
         T0 = 3'd0, 
         T1 = 3'd1, 
@@ -47,6 +47,10 @@ module cpu (
             S <= 0;
             INPR <= 0;
             OUTR <= 0;
+            // Inicializar memoria a 0 durante reset asíncrono
+            for (integer i = 0; i < 32; i = i + 1) begin
+                mem[i] <= 0;
+            end
         end else begin
             S <= (start_cpu & ~S) | (~stop_cpu & S);
 
