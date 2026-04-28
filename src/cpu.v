@@ -34,7 +34,7 @@ module cpu (
 
     wire [7:0] D;
 
-    reg [7:0] mem [31:0];
+    reg [7:0] mem [15:0];
 
     initial begin
     for (integer i = 0; i < 32; i = i + 1) begin
