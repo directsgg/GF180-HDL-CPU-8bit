@@ -74,7 +74,7 @@ end
                 end
 
                 else if (dsp_ar) begin
-                    OUTR <= AR;
+                    OUTR <= {3'b0, AR};
                 end
                 else if (set_ar) begin
                     AR <= INPR[4:0];
